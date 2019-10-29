@@ -9,7 +9,7 @@ var mongoose = require("mongoose");
 var PORT = process.env.PORT || 3000;
 
 var app = express();
-var router = express.Router;
+var router = express.Router();
 require("./config/routes")(router);
 
 app.use(express.static(__dirname +"/public"));
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(router);
 var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(db, function(err){
+mongoose.connect(db, function(error){
     if(error){
         console.log(error);
     }
