@@ -7,12 +7,15 @@ var mongoose = require("mongoose");
 
 
 var PORT = process.env.PORT || 3000;
+
 var app = express();
 var router = express.Router;
+require("./config/routes")(router);
+
 app.use(express.static(__dirname +"/public"));
 // 
 
-app.engine("handlebars", expressHandlebars({
+app.engine("handlebars", exphbs({
     defaultLayout: "main"
 }));
 app.set("view engine","handlebars");
